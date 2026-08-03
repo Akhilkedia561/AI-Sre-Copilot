@@ -1,0 +1,27 @@
+# Secrets
+.env
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Persistence
+/data/
+chroma/
+*.sqlite3
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log

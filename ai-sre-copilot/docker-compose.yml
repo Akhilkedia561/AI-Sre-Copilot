@@ -1,0 +1,25 @@
+# Add this to your existing PGL docker-compose or run standalone.
+# The copilot expects Prometheus/Loki/Alertmanager reachable from within
+# the same Docker network — join it to the network you already use.
+
+services:
+  copilot:
+    build: .
+    container_name: sre-copilot
+    ports:
+      - "8000:8000"
+    environment:
+      # Point these at your live infrastructure
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://api.groq.com/openai/v1}
+      - LLM_MODEL=${LLM_MODEL:-llama-3.3-70b-versatile}
+      - PROMETHEUS_URL=${PROMETHEUS_URL:-http://prometheus:9090}
+      - LOKI_URL=${LOKI_URL:-http://loki:3100}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - LOG_LEVEL=INFO
+    volumes:
+      - copilot-data:/data
+    restart: unless-stopped
+
+volumes:
+  copilot-data:
