@@ -1,6 +1,6 @@
-# AI SRE Copilot
+# AI SRE copilot 
 
-Autonomous incident-investigation agent for Prometheus + Grafana + Loki stacks.
+Autonomous incident-investigation agent for Prometheus + Grafana + Loki-stacks.
 
 When Alertmanager fires an alert, the copilot receives it, iteratively queries
 Prometheus and Loki, searches a runbook knowledge base, checks recent
